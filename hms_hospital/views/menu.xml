@@ -1,0 +1,70 @@
+<odoo>
+    <menuitem id="hospital_root"
+              name="Hospital"
+              web_icon="hms_hospital,static/images/silverdale.jpg"/>
+
+    <menuitem id="hospital_patient"
+              name="Patient"
+              parent="hospital_root"
+              action="hospital_patient_action"
+              sequence="10"/>
+
+    <menuitem id="hospital_doctor"
+              name="Doctor"
+              parent="hospital_root"
+              action="hospital_doctor_action"
+              sequence="20"/>
+
+    <menuitem id="hospital_diagnose"
+              name="Diagnosis"
+              parent="hospital_root"
+              action="hospital_diagnose_action"
+              sequence="40"/>
+
+    <menuitem id="hospital_bill"
+              name="Bill"
+              parent="hospital_root"
+              action="hospital_bill_action"
+              sequence="30"/>
+
+    <menuitem id="hospital_labotary"
+              name="Labotary"
+              parent="hospital_root"
+              action="hospital_labotary_action"
+              sequence="50"/>
+
+    <menuitem id="hospital_room"
+              name="Room"
+              parent="hospital_root"
+              action="hospital_room_action"
+              sequence="60"/>
+
+    <menuitem id="create_patient_bill"
+              name="Create Patient Bill"
+              parent="hospital_bill"
+              action="create_bill_wizard_action"
+              sequence="70"/>
+
+    <menuitem id="hospital_bill_sub"
+              name="Patient Bill"
+              parent="hospital_bill"
+              action="hospital_bill_action"
+              sequence="80"/>
+
+    <menuitem id="hospital_bill_invoice"
+              name="Bill Invoice"
+              parent="hospital_bill"
+              action="hospital_bill_invoice_action"
+              sequence="90"/>
+
+    <menuitem id="hospital_configuration_root"
+              name="Configuration"
+              parent="hospital_root"
+              sequence="100"/>
+
+    <menuitem id="hospital_customer_root"
+              name="Customer"
+              parent="hospital_configuration_root"
+              action="account.res_partner_action_customer"
+              sequence="110"/>
+</odoo>

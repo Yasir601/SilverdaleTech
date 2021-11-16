@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Create Form for wizard-->
+    <record id="create_bill_wizard_form" model="ir.ui.view">
+        <field name="name">create.bill.wizard.form</field>
+        <field name="model">create.bill.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Create Bill">
+                <sheet>
+                    <group string="Bill Info">
+                        <group>
+                            <field name="patient_id"/>
+                            <field name="bill_no"/>
+                            <field name="doctor_charge"/>
+                            <field name="room_charge"/>
+                        </group>
+                        <group>
+                            <field name="lab_charge_bill"/>
+                            <field name="no_of_days"/>
+                            <field name="notes"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Print" class="btn-primary" name="action_print_report" type="object"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    <!--                    <button string="Generate invoice" class="btn-primary" name="generate_invoice" type="object"/>-->
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!--    ******************************************** Form views for Bill invoice ***********************-->
+
+    <record id="hospital_bill_invoice_form" model="ir.ui.view">
+        <field name="name">hospital.bill.form.invoice</field>
+        <field name="model">hospital.bill.invoice.wiz</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group string="Bill invoice info">
+                        <group>
+                            <field name="owner_id"/>
+                            <field name="date"/>
+                        </group>
+                        <group>
+                            <field name="due_date"/>
+                            <field name="payment"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Generate invoice" class="btn-primary" name="create_invoice" type="object"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action for wizard model-->
+    <record id="create_bill_wizard_action" model="ir.actions.act_window">
+        <field name="name">Create Patient Bill</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">create.bill.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="create_bill_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+
+    <!--    ******************************* Invoices Action *************************************** -->
+
+    <record id="hospital_bill_invoice_action" model="ir.actions.act_window">
+        <field name="name">Bill Invoice</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.bill.invoice.wiz</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="hospital_bill_invoice_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    For Res Partner Model-->
+    <record id="view_partner_form_inherited" model="ir.ui.view">
+        <field name="name">res.partner.inherited</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <button type="action" name="%(hospital_patient_action_res)d" string="Patient"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+

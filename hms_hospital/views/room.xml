@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hospital_room_form" model="ir.ui.view">
+        <field name="name">hospital.room.form</field>
+        <field name="model">hospital.room</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button id="button_confirm" type="object" name="action_confirm"
+                            string="Confirm" states="draft" class="btn-primary"/>
+                    <button id="button_done" type="object" name="action_done"
+                            string="Done" states="confirm" class="btn-primary"/>
+                    <button id="button_draft" type="object" name="action_draft"
+                            string="Draft" states="cancel" class="btn-primary"/>
+                    <button id="button_cancel" type="object" name="action_cancel"
+                            string="Cancel" states="draft,done,confirm"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done,confirm"/>
+                </header>
+                <sheet>
+                    <!--                    <widget name="web_ribbon" title="Room" bg_color="bg-success"/>-->
+                    <group string="Room info">
+                        <group>
+                            <field name="name"/>
+                            <field name="room_no"/>
+                        </group>
+                        <group>
+                            <field name="room_type"/>
+                            <field name="status"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--    ***************************** Tree View for Hospital Model *********************************************-->
+    <record id="hospital_room_tree" model="ir.ui.view">
+        <field name="name">hospital.room.tree</field>
+        <field name="model">hospital.room</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="room_no"/>
+                <field name="room_type"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--*************************** Action for Room Model *****************************************-->
+    <record id="hospital_room_action" model="ir.actions.act_window">
+        <field name="name">Room</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.room</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="hospital_room_tree"/>
+        <!--        <field name="help" type="html">-->
+        <!--&lt;!&ndash;            <p class="o_view_nocontent_smiling_face">&ndash;&gt;-->
+        <!--&lt;!&ndash;                Admitted Patient are Here&ndash;&gt;-->
+        <!--&lt;!&ndash;            </p>&ndash;&gt;-->
+        <!--        </field>-->
+    </record>
+
+</odoo>
+

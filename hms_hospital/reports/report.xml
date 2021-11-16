@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="report_patient_card" model="ir.actions.report">
+        <field name="name">Patients Card</field>
+        <field name="model">hospital.patient</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hms_hospital.report_patient_id_card</field>
+        <field name="report_file">hms_hospital.report_patient_id_card</field>
+        <field name="binding_model_id" ref="model_hospital_patient"/>
+    </record>
+    <!--    ************************************** Report by using wizard **********************-->
+
+    <record id="report_create_bill" model="ir.actions.report">
+        <field name="name">Bill Details</field>
+        <field name="model">create.bill.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hms_hospital.report_bill_details</field>
+        <field name="report_file">hms_hospital.report_bill_details</field>
+        <field name="binding_model_id" ref="model_create_bill_wizard"/>
+    </record>
+
+    <!--    ************************************** Report in excel **********************-->
+
+    <record id="report_patient_card_xlsx" model="ir.actions.report">
+        <field name="name">Patients Card Excel</field>
+        <field name="model">hospital.patient</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">hms_hospital.report_patient_id_card_xlsx</field>
+        <field name="report_file">hms_hospital.report_patient_id_card_xlsx</field>
+        <field name="binding_model_id" ref="model_hospital_patient"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>
+

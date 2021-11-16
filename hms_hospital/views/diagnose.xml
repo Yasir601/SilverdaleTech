@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hospital_diagnose_form" model="ir.ui.view">
+        <field name="name">hospital_diagnose.form</field>
+        <field name="model">hospital.diagnose</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button id="button_confirm" type="object" name="action_confirm"
+                            string="Confirm" states="draft" class="btn-primary"/>
+                    <button id="button_done" type="object" name="action_done"
+                            string="Done" states="confirm" class="btn-primary"/>
+                    <button id="button_draft" type="object" name="action_draft"
+                            string="Draft" states="cancel" class="btn-primary"/>
+                    <button id="button_cancel" type="object" name="action_cancel"
+                            string="Cancel" states="draft,done,confirm"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done,confirm"/>
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" title="Diagnosis" bg_color="bg-success"/>
+                    <group string="Diagnosis info">
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="age"/>
+                        </group>
+                        <group>
+                            <field name="patient_id"/>
+                            <field name="gender"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description" name="patient">
+                            <group>
+                                <field name="notes"/>
+                            </group>
+                        </page>
+                        <page string="Diagnosis">
+                            <tree editable="bottom">
+                                <field string="Symptoms" name="symptoms_ids"/>
+                                <field string="Treatment" name="treatment_ids"/>
+                            </tree>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    ***************************** Tree View for Hospital Model *********************************************
+    <record id="hospital_diagnose_tree" model="ir.ui.view">
+        <field name="name">hospital.diagnose.tree</field>
+        <field name="model">hospital.diagnose</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="age"/>
+                <field name="patient_id"/>
+                <field name="gender"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--*************************** Action for Room Model *****************************************-->
+    <record id="hospital_diagnose_action" model="ir.actions.act_window">
+        <field name="name">Diagnosis</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.diagnose</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Diagnosis
+            </p>
+        </field>
+    </record>
+    <!--    <record id="hospital_patient_action" model="ir.actions.act_window">-->
+    <!--        <field name="name">Patient</field>-->
+    <!--        <field name="type">ir.actions.act_window</field>-->
+    <!--        <field name="res_model">hospital.patient</field>-->
+    <!--        <field name="view_mode">kanban,tree,pivot,form</field>-->
+    <!--        <field name="context"></field>-->
+    <!--        <field name="help" type="html">-->
+    <!--            <p class="o_view_nocontent_smiling_face">-->
+    <!--                Create your Patients here-->
+    <!--            </p>-->
+    <!--        </field>-->
+    <!--    </record>-->
+
+</odoo>
+

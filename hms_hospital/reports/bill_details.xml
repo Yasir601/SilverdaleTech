@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_bill_details">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="o">
+                    <div class="page">
+                        <div class="oe-structure"/>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h3 style="text-align:center;">Bill Details</h3>
+                                <table class="table table-condensed"
+                                       style="border: 3px solid black; width: 1000px; height: 140px;">
+                                    <tr>
+                                        <th>Patient Name:</th>
+                                        <th>bill No:</th>
+                                        <th>Doctor Charge:</th>
+                                        <th>Room Charge:</th>
+                                        <th>No of Days:</th>
+                                        <th>Lab Charge Bill:</th>
+                                        <th>Notes:</th>
+                                    </tr>
+                                    <tr>
+                                        <td width="10%">
+                                            <span t-field="o.patient_id"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.bill_no"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.doctor_charge"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.doctor_charge"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.no_of_days"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.lab_charge_bill"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="o.notes"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
+

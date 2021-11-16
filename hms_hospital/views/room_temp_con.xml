@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="hospital_room_form" model="website.menu">
+            <field name="name">Room Details</field>
+            <field name="url">/room_webform</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence">120</field>
+        </record>
+
+        <template id="room_page" name="Room Details">
+            <t t-call="website.layout">
+                <br/>
+                <div class="oe_structure">
+                    <div class="container">
+                        <h3 style="text-align: center; color: yellow;">Room Registration Form</h3>
+                        <form action='/create/webroom' method="POST">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="form-group form-field">
+                                <label class="col-md-3 col-sm-4 control-label" for="name">Name:</label>
+                                <div class="col-md-7 col-sm-8">
+                                    <input type="text" class="form-control o_website_form_input" name="name" id="name"
+                                           t-att-value="name" placeholder="e.g khan" required="required"/>
+                                </div>
+                            </div>
+                            <div class="form-group form-field o_website_form_required">
+                                <label class="col-md-3 col-sm-4 control-label" for="room_no">Room No:</label>
+                                <div class="col-md-7 col-sm-8">
+                                    <input type="text" class="form-control o_website_form_input" name="room_no"
+                                           id="room_no" t-att-value="room_no" required="required"/>
+                                </div>
+                            </div>
+                            <div class="form-group form-field o_website_form_required">
+                                <label class="col-md-3 col-sm-4 control-label" for="room_type">Room Type:</label>
+                                <div class="col-md-7 col-sm-8">
+                                    <input type="text" class="form-control o_website_form_input" name="room_type"
+                                           id="room_type" t-att-value="room_type" required="required"/>
+                                </div>
+                            </div>
+                            <div class="form-group form-field o_website_form_required">
+                                <label class="col-md-3 col-sm-4 control-label" for="status">Description:</label>
+                                <div class="col-md-7 col-sm-8">
+                                    <input type="text" class="form-control o_website_form_input" name="status"
+                                           id="status" t-att-value="status" required="required"/>
+                                </div>
+                            </div>
+                            <div class="form-group form-field o_website_form_required">
+                                <div class="col-md-7 col-sm-8">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary" style="margin-left:10px;" formaction="/delete/webroom">Delete
+                                    </button>
+                                </div>
+                                <br/>
+                                <br/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <record id="room_thanks" model="website.page">
+            <field name="name">Thanks</field>
+            <field name="type">qweb</field>
+            <field name="url">/patient-thanks-you</field>
+            <field name="website_published">True</field>
+            <field name="key">hms_hospital.room_thanks</field>
+            <field name="arch" type="xml">
+                <t t-call="website.layout">
+                    <div id="wrap">
+                        <div class="container">
+                            <h1>Thanks</h1>
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="alert alert-success" role="status">
+                                        The Bill details has been added successfully
+                                    </div>
+                                    <p>
+                                        We will get back to you shortly
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </field>
+        </record>
+
+        <!--        *********************************************** Message for Deleter Records ****************************-->
+        <record id="room_delete_thanks" model="website.page">
+            <field name="name">Thanks</field>
+            <field name="type">qweb</field>
+            <field name="url">/patient-thank-you</field>
+            <field name="website_published">True</field>
+            <field name="website_published">True</field>
+            <field name="key">hms_hospital.room_delete_thanks</field>
+            <field name="arch" type="xml">
+                <t t-call="website.layout">
+                    <div id="wrap">
+                        <div class="container">
+                            <h1>Thanks</h1>
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="alert alert-success" role="status">
+                                        The record has been Deleted Successfully..............
+                                    </div>
+                                    <br/>
+                                    <p>
+                                        We will get back to you shortly
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </field>
+        </record>
+    </data>
+</odoo>

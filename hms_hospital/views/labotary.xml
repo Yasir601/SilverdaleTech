@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hospital_labotary_form" model="ir.ui.view">
+        <field name="name">hospital.labotary.form</field>
+        <field name="model">hospital.labotary</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button id="button_confirm" type="object" name="action_confirm"
+                            string="Confirm" states="draft" class="btn-primary"/>
+                    <button id="button_done" type="object" name="action_done"
+                            string="Done" states="confirm" class="btn-primary"/>
+                    <button id="button_draft" type="object" name="action_draft"
+                            string="Draft" states="cancel" class="btn-primary"/>
+                    <button id="button_cancel" type="object" name="action_cancel"
+                            string="Cancel" states="draft,done,confirm"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done,confirm"/>
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" title="Labotary" bg_color="bg-success"/>
+                    <group string="Labotary Info">
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="doctor_id"/>
+                            <field name="test_type"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Patient" name="patient">
+                            <field name="patient_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--    ***************************** Tree View for Hospital Model *********************************************-->
+    <record id="hospital_labotary_tree" model="ir.ui.view">
+        <field name="name">hospital.labotary.tree</field>
+        <field name="model">hospital.labotary</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="patient_ids"/>
+                <field name="doctor_id"/>
+                <field name="test_type"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--*************************** Action for Room Model *****************************************-->
+    <record id="hospital_labotary_action" model="ir.actions.act_window">
+        <field name="name">Labotary</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.labotary</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Labotary
+            </p>
+        </field>
+    </record>
+
+
+</odoo>
+

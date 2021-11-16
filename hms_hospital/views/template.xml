@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="patients_page" name="Patients Details">
+        <t t-call="website.layout">
+            <div class="oe_structure">
+                <div class="container">
+                    <br/>
+                    <center>
+                        <h3>Patients Details</h3>
+                    </center>
+                    <br/>
+                    <table class="table-striped table">
+                        <thead style="font-size: 23px;">
+                            <tr>
+                                <h6>
+                                    <b>
+                                        <th>Name:</th>
+                                        <th>Father Name:</th>
+                                        <th>Age:</th>
+                                        <th>
+                                            <b>State:</b>
+                                        </th>
+                                    </b>
+                                </h6>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="my_details" t-as="order">
+                                <tr>
+                                    <td>
+                                        <span t-esc="order.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="order.father_name"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="order.age"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="order.state"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

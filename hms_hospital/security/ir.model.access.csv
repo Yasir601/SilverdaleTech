@@ -1,0 +1,17 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hospital_patient,access.hospital.patient,model_hospital_patient,,1,1,1,1
+access_hospital_doctor,access.hospital.doctor,model_hospital_doctor,,1,1,1,1
+access_hospital_room,access.hospital.room,model_hospital_room,,1,1,1,1
+access_hospital_labotary,access.hospital.labotary,model_hospital_labotary,,1,1,1,1
+access_hospital_bill,access.hospital.bill,model_hospital_bill,,1,1,1,1
+access_hospital_diagnose,access.hospital.diagnose,model_hospital_diagnose,,1,1,1,1
+access_hospital_symptom,access.hospital.symptom,model_hospital_symptom,,1,1,1,1
+access_hospital_treatment,access.hospital.treatment,model_hospital_treatment,,1,1,1,1
+access_create_bill_wizard,access.create.bill.wizard,model_create_bill_wizard,,1,1,1,1
+access_hospital_bill_invoice_wiz,access.hospital.bill.invoice.wiz,model_hospital_bill_invoice_wiz,,1,1,1,1
+
+
+
+
+
+

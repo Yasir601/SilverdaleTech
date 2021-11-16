@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hospital_doctor_form" model="ir.ui.view">
+        <field name="name">hospital.doctor.form</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button id="button_confirm" type="object" name="action_confirm"
+                            string="Confirm" states="draft" class="btn-primary"/>
+                    <button id="button_done" type="object" name="action_done"
+                            string="Done" states="confirm" class="btn-primary"/>
+                    <button id="button_draft" type="object" name="action_draft"
+                            string="Draft" states="cancel" class="btn-primary"/>
+                    <button id="button_cancel" type="object" name="action_cancel"
+                            string="Cancel" states="draft,done,confirm"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done,confirm"/>
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" title="Doctor" bg_color="bg-success"/>
+                    <group>
+                        <group string="Doctor Info">
+                            <field name="name"/>
+                            <field name="age"/>
+                            <field name="specialization"/>
+                        </group>
+                        <group string="Other Info">
+                            <field name="gender"/>
+                            <field name="address"/>
+                            <field name="phone_no"/>
+                            <field name="user_id"/>
+                        </group>
+                    </group>
+                    <notebook position="inside">
+                        <page string="Description" name="hospital">
+                            <group>
+                                <field name="notes"/>
+                            </group>
+                        </page>
+                        <page string="Patients" name="hospital">
+                            <group>
+                                <field name="patient_ids" widget="many2many_tags"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--    ***************************** Tree View for Doctor Model *********************************************-->
+    <record id="hospital_doctor_tree" model="ir.ui.view">
+        <field name="name">hospital.doctor.tree</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="age"/>
+                <field name="specialization"/>
+                <field name="phone_no"/>
+                <field name="gender"/>
+                <field name="address"/>
+                <field name="patient_ids"/>
+                <field name="user_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--    ******************************* Kanban views for Doctor Model**********************************-->
+    <record id="hospital_doctor_kanban" model="ir.ui.view">
+        <field name="name">hospital.doctor.kanban</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_doctor">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="age"/>
+                <field name="specialization"/>
+                <field name="phone_no"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="o_kanban_image">
+                                <img alt="Doctor" style="width: 100px; height: 100px"
+                                     t-att-src="kanban_image('hospital.patient', 'image',record.id.raw_value)"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <ul>
+                                    <li>
+                                        Name:
+                                        <field name="name"/>
+                                    </li>
+                                    <li>
+                                        Age:
+                                        <field name="age"/>
+                                    </li>
+                                    <li>
+                                        Specialization:
+                                        <field name="specialization"/>
+                                    </li>
+                                    <li>
+                                        Phone No:
+                                        <field name="phone_no"/>
+                                    </li>
+                                    <li>
+                                        Gender:
+                                        <field name="gender"/>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!--Action for Hospital Doctor Model -->
+    <record id="hospital_doctor_action" model="ir.actions.act_window">
+        <field name="name">Doctor</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.doctor</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Doctor are Here
+            </p>
+        </field>
+    </record>
+
+
+</odoo>
+
